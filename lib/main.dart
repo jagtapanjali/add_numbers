@@ -10,6 +10,8 @@ void main() {
     //print(add('-2'));
     //print(add('1,-1'));
     //print(add('1\n-22,4'));
+    print(add('//;\n1;7;'));
+    print(add('1,2,'));
     print(add('//;\n-1;7;-3'));
   }
 }
@@ -36,9 +38,11 @@ int add(String numbers) {
 
   List<String> negativeNumbers = [];
   for (var num in numberList) {
-    int parsedNum = int.parse(num);
-    if (parsedNum < 0) {
-      negativeNumbers.add(num);
+    if(num.isNotEmpty) {
+      int parsedNum = int.parse(num);
+      if (parsedNum < 0) {
+        negativeNumbers.add(num);
+      }
     }
   }
 
@@ -47,5 +51,10 @@ int add(String numbers) {
   }
 
   //add all numbers of numberList
-  return numberList.fold(0, (sum, number) => sum + int.parse(number));
+  return numberList.fold(0, (sum, number) {
+    if(number.isEmpty) {
+      number = '0';
+    }
+    return sum + int.parse(number);
+  });
 }
