@@ -13,6 +13,8 @@ int add(String numbers) {
   if (numbers.isEmpty) {
     return 0;
   }
+  // Replace new lines with commas
+  numbers = numbers.replaceAll('\n', ',');
   //Handle Comma-Separated Numbers
   List<String> numberList = numbers.split(',');
   //add all numbers of numberList
