@@ -11,5 +11,5 @@ int add(String numbers) {
   if (numbers.isEmpty) {
     return 0;
   }
-  return 0;  // placeholder
+  return int.parse(numbers);  // convert string to int
 }
