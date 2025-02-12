@@ -36,10 +36,13 @@ int add(String numbers) {
   //Handle Comma-Separated Numbers
   List<String> numberList = numbers.split(',');
 
+  //handle negative numbers
   List<String> negativeNumbers = [];
   for (var num in numberList) {
+    //handling if string input ends with delimiter
     if(num.isNotEmpty) {
       int parsedNum = int.parse(num);
+      //check if number is negative
       if (parsedNum < 0) {
         negativeNumbers.add(num);
       }
@@ -47,11 +50,13 @@ int add(String numbers) {
   }
 
   if (negativeNumbers.isNotEmpty) {
+    //throw error with join of negativeNumbers
     throw FormatException('Negative numbers not allowed: ${negativeNumbers.join(',')}');
   }
 
   //add all numbers of numberList
   return numberList.fold(0, (sum, number) {
+    //handling if string input ends with delimiter
     if(number.isEmpty) {
       number = '0';
     }
